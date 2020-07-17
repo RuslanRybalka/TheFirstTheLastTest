@@ -1,0 +1,26 @@
+{
+  "name": "testing_work",
+  "version": "1.0.0",
+  "description": "testing work for TheFirstTheLast",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "test",
+    "html5",
+    "css3",
+    "javascript"
+  ],
+  "author": "Ruslan Rubalka",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.10",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify-es": "^2.0.0"
+  }
+}
