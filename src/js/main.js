@@ -1,3 +1,5 @@
+// Init swiper slider
+
 const swiper = new Swiper('.swiper-container', {
   speed: 1000,
   slidesPerView: 'auto',
@@ -12,6 +14,9 @@ const swiper = new Swiper('.swiper-container', {
 });
 
 document.addEventListener('DOMContentLoaded', function(){
+
+  // Customize cursor icon when it is under the slider
+
   let cursor = document.createElement('div');
   cursor.textContent = 'DRAG ME';
   cursor.classList.add('custom-cursor');
@@ -52,20 +57,8 @@ document.addEventListener('DOMContentLoaded', function(){
   })
   
   
-  // let photo = document.querySelector('.photo_main');
-  // let photoCoords = photo.getBoundingClientRect();
-  // photoCoords.centerY = (photoCoords.top + photoCoords.bottom) / 2;
-  // photoCoords.centerX = (photoCoords.left + photoCoords.right) / 2;  
-  // console.log(photoCoords);
+  // *****************   Parallax *****************
 
-  // window.addEventListener('mousemove', movePhoto);
-
-  // function movePhoto(e){
-  //   //photo.style.left = photoCoords.left - (e.clientX - photoCoords.centerX) / window.innerWidth * 50 + 'px';
-  //   photo.style.left = photoCoords.centerX - (e.clientX - photoCoords.centerX)  / window.innerWidth * 50 + 'px';
-  // }
-
-   
   let photos = document.querySelectorAll('.photo');
   photos = [].map.call(photos, (photo) => {
     let coords = photo.getBoundingClientRect();
@@ -76,8 +69,9 @@ document.addEventListener('DOMContentLoaded', function(){
       params: coords
     };
   })
-  console.log(photos);
+
   window.addEventListener('mousemove', movePhotos);
+
   function movePhotos(e){
     [].map.call(photos, photo => {
       let mount = +photo.element.dataset['depth'] * 30;
