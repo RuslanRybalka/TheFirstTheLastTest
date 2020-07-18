@@ -3,6 +3,9 @@
   height: 50%;
   top: 50%;
   transform: translateY(-50%);
+  &:hover{
+    cursor: url(../img/cursor.png), auto;
+  }
 }
 .swiper-slide{
   font-family: 'Schnyder Cond L Demi', sans-serif;
@@ -23,9 +26,6 @@
   -webkit-text-stroke-width: 0.84px;
   -webkit-text-stroke-color:#580300;
   transition: 0.5s;
-  &:hover{
-    cursor: url(../img/cursor.png), auto;
-  }
 }
 .swiper-slide-active{
   -webkit-text-fill-color:  #580300; /* Will override color (regardless of order) */

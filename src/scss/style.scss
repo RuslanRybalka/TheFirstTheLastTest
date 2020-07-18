@@ -53,6 +53,19 @@ body{
     stroke-dashoffset: 0;
   }
 }
+
+.custom-cursor{
+  font-family: 'TT_Travels Light', sans-serif;
+  font-size: 8px;
+  text-transform: uppercase;
+  color: black;
+  position: fixed;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.custom-cursor_visible{
+  opacity: 1;
+}
 @import "photos";
 @import "swiper";
 @import "footer";
