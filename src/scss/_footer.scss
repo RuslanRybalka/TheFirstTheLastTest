@@ -1,0 +1,16 @@
+.socials{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: fixed;
+  bottom: 47px;
+  left: 48px;
+  z-index: 1;
+}
+.socials__line{
+  display: block;
+  width: 56px;
+  border-bottom: 1px solid #393939;
+  margin: 0 8px;
+  opacity: 0.24;
+}

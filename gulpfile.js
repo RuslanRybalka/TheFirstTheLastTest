@@ -6,6 +6,9 @@ const uglify        = require('gulp-uglify-es').default;
 const sass          = require('gulp-sass');
 const autoprefixer  = require('gulp-autoprefixer');
 const cleancss      = require('gulp-clean-css');
+const ttf2woff      = require('gulp-ttf2woff');
+const ttf2woff2     = require('gulp-ttf2woff2');
+const fonter        = require('gulp-fonter');
 
 const src_directory = 'src';
 const dist_directory = 'dist';
@@ -13,18 +16,40 @@ const dist_directory = 'dist';
 const path = {
   src: {
     scripts: [
+      'node_modules/swiper/swiper-bundle.min.js',
       src_directory + '/js/main.js'
     ],
     styles: [
       src_directory + '/scss/style.scss'
     ],
+    fonts: src_directory + '/fonts/',
     html: src_directory + '/index.html'
   },
   dist: {
     scripts: dist_directory + '/js/',
     styles:  dist_directory + '/css/',
+    fonts:   dist_directory + '/fonts/',
     html:    dist_directory
   }
+}
+
+
+const fonts = () => {
+  src(path.src.fonts + '/**/*.ttf')
+    .pipe(ttf2woff())
+    .pipe(dest(path.dist.fonts));
+
+  return src(path.src.fonts + '/**/*.ttf')
+    .pipe(ttf2woff2())
+    .pipe(dest(path.dist.fonts));
+}
+
+const otf2ttf = () => {
+  return src(path.src.fonts + '/**/*.otf')
+          .pipe(fonter({
+            formats: ['ttf']
+          }))
+          .pipe(dest(path.src.fonts));
 }
 
 const browsersync = () => {
@@ -88,7 +113,8 @@ const watchAll = () => {
   watchHtml();
 }
 
-
+exports.otf2ttf      = otf2ttf;
+exports.fonts        = fonts;
 exports.watchScripts = watchScripts;
 exports.watchStyles  = watchStyles;
 exports.watchHtml    = watchHtml;

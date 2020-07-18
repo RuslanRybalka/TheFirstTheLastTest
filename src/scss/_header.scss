@@ -1,0 +1,27 @@
+.logo{
+  position: fixed;
+  top: 40px;
+  left:47px;
+  z-index: 99;
+}
+
+.nav{
+  display: block;
+  position:fixed;
+  top: 43px;
+  right: 48px;
+  z-index: 100;
+}
+.menu{
+  list-style: none;
+  padding: 0;
+}
+.menu__item{
+  font-size: 11px;
+  letter-spacing: 2px;  
+  margin-bottom: 0.6rem;
+  transition: 0.1s;
+  &:hover{
+    transform: translateX(-5px) scale(1.05);
+  }
+}
