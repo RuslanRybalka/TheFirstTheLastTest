@@ -14,13 +14,15 @@
 .photo_main{
   // top: 50%;
   // left: 50%;
-  // transform: translate(-50%, -50%) rotate(1.5deg);
-  top: 74px;
-  left: 473px;
+  transform:rotate(1.5deg);
+  //@extend: 74px;
+  //left: 473px;
+  left: 32.84%;
+  top: 8.58%;
   // width: 476px;
   // height: 702px;
-  width: 33.05vw;
-  height: 46vw;
+  width: calc(33.05vw *0.9);
+  height: calc(46vw * 0.9);
 
 }
 .photo__img{
@@ -30,15 +32,19 @@
   height: 100%;
 }
 .photo_left{
-  width: 238px;
-  height: 331px;
+  //width: 238px;
+  //height: 331px;
+  width: calc(16.53vw * 0.9);
+  height: calc(22.96vw * 0.9);
   top: 23.4%;
   left: 15.54%;
   transform: rotate(1.1deg);
 }
 .photo_right{
-  width: 345px;
-  height: 238px;
+  width: calc(23.96vw * 0.9);
+  height: calc(16.52vw * 0.9);
+  //width: 345px;
+  //height: 238px;
   top: 57.42%;
   left: 61.25%;
   transform: rotate(2.03deg);
