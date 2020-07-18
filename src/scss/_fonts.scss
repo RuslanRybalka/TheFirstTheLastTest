@@ -19,9 +19,24 @@
 
 @font-face {
   font-family: "Schnyder Cond XL Demi"; 
-  src: url("../fonts/Schnyder_X_Condensed/Schnyder_X_Cond_XL_Demi.woff2") format('woff2'),
-        url("../fonts/Schnyder_X_Condensed/Schnyder_X_Cond_XL_Demi.woff") format('woff'),
-        url("../fonts/Schnyder_X_Condensed/Schnyder_X_Cond_XL_Demi.ttf") format('truetype');       
+  src: url("../fonts/Schnyder_X_Condensed/SchnyderXCondLDemi.woff2") format('woff2'),
+       url("../fonts/Schnyder_X_Condensed/Schnyder_X_Cond_XL_Demi.woff") format('woff');       
+  font-style: normal; 
+  font-weight: normal; 
+}
+
+@font-face {
+  font-family: "Schnyder Cond L Demi"; 
+  src: url("../fonts/Schnyder_X_Condensed/Schnyder_X_Cond_L_Demi.woff2") format('woff2'),
+       url("../fonts/Schnyder_X_Condensed/Schnyder_X_Cond_L_Demi.woff") format('woff');       
+  font-style: normal; 
+  font-weight: normal; 
+}
+
+@font-face {
+  font-family: "Schnyder Cond XL Light"; 
+  src: url("../fonts/Schnyder_X_Condensed/Schnyder X Cond XL Light.woff2") format('woff2'),
+       url("../fonts/Schnyder_X_Condensed/Schnyder X Cond XL Light.woff") format('woff');       
   font-style: normal; 
   font-weight: normal; 
 }

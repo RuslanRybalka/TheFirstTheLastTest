@@ -9,13 +9,17 @@
 }
 .photo{
   position: absolute;
+  overflow: hidden;
 }
 .photo_main{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(1.5deg);
-  width: 476px;
-  height: 702px;
+  // width: 476px;
+  // height: 702px;
+  width: 33.05vw;
+  height: 46vw;
+
 }
 .photo__img{
   display: block;
@@ -36,4 +40,8 @@
   top: 57.42%;
   left: 61.25%;
   transform: rotate(2.03deg);
+}
+
+.photo__img_scale_x2{
+  transform: translateY(120px) scale(2);
 }

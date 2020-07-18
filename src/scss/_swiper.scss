@@ -1,25 +1,31 @@
 .swiper-container{
   width: 100%;
-  height: 100%;
+  height: 50%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .swiper-slide{
-  font-family: 'Schnyder Cond XL Demi', sans-serif;
-  font-size: 125.58px;
+  font-family: 'Schnyder Cond L Demi', sans-serif;
+  font-size: 128px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 40vh;
   color: #580300;
   text-transform: uppercase;
   //pointer-events: none;
-  flex-basis: 55%;
+  flex-basis: 65%;
   flex-shrink: 0;
   flex-grow: 0;
+  letter-spacing: 8px;
 
   -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 0.84px;
   -webkit-text-stroke-color:#580300;
   transition: 0.5s;
+  &:hover{
+    cursor: url(../img/cursor.png), auto;
+  }
 }
 .swiper-slide-active{
   -webkit-text-fill-color:  #580300; /* Will override color (regardless of order) */
