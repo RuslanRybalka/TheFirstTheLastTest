@@ -9,6 +9,8 @@ const cleancss      = require('gulp-clean-css');
 const ttf2woff      = require('gulp-ttf2woff');
 const ttf2woff2     = require('gulp-ttf2woff2');
 const fonter        = require('gulp-fonter');
+const imagemin      = require('gulp-imagemin');
+const del           = require('del');
 
 const src_directory = 'src';
 const dist_directory = 'dist';
@@ -23,17 +25,23 @@ const path = {
       src_directory + '/scss/style.scss'
     ],
     fonts: src_directory + '/fonts/',
-    html: src_directory + '/index.html'
+    html: src_directory + '/index.html',
+    images: src_directory + '/img/*'
   },
   dist: {
     scripts: dist_directory + '/js/',
     styles:  dist_directory + '/css/',
     fonts:   dist_directory + '/fonts/',
-    html:    dist_directory
+    html:    dist_directory,
+    images:  dist_directory + '/img'
   }
 }
 
-
+const images = () => {
+  return src(path.src.images)
+         .pipe(imagemin())
+         .pipe(dest(path.dist.images));
+}
 const fonts = () => {
   src(path.src.fonts + '/**/*.ttf')
     .pipe(ttf2woff())
@@ -113,15 +121,32 @@ const watchAll = () => {
   watchHtml();
 }
 
-exports.otf2ttf      = otf2ttf;
-exports.fonts        = fonts;
-exports.watchScripts = watchScripts;
-exports.watchStyles  = watchStyles;
-exports.watchHtml    = watchHtml;
-exports.watchAll     = watchAll;
-exports.html         = html;
-exports.scripts      = scripts;
-exports.styles       = styles;
-exports.browsersync  = browsersync;
 
-exports.build        = series(html, parallel(styles, scripts, browsersync, watchAll));
+const clean = () => {
+  return del(dist_directory);
+}
+
+const createFolders = () => {
+  return src('*.*', {read: false})
+          .pipe(dest(dist_directory))
+          .pipe(dest(dist_directory + '/css'))
+          .pipe(dest(dist_directory + '/js'))
+          .pipe(dest(dist_directory + '/fonts'))
+          .pipe(dest(dist_directory + '/img'))
+}
+
+exports.createFolders = createFolders;
+exports.clean         = clean;
+exports.images        = images;
+exports.otf2ttf       = otf2ttf;
+exports.fonts         = fonts;
+exports.watchScripts  = watchScripts;
+exports.watchStyles   = watchStyles;
+exports.watchHtml     = watchHtml;
+exports.watchAll      = watchAll;
+exports.html          = html;
+exports.scripts       = scripts;
+exports.styles        = styles;
+exports.browsersync   = browsersync;
+
+exports.default       = series(clean, fonts, images, html, parallel(styles, scripts, browsersync, watchAll));
