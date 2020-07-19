@@ -124,4 +124,18 @@ document.addEventListener('DOMContentLoaded', function(){
       photo.element.style.top = photo.params.y - photosParentCoords.top- (e.clientY - photo.params.centerY) / photo.params.height * mount + 'px';
     })
   }
+
+  // EventListeners for clicking burger
+
+  let burgerMenu = document.querySelector('.burger');
+  burgerMenu.addEventListener('click', clickBurger)
+  function clickBurger(e){
+    this.classList.toggle('burger_active');
+    if(this.classList.contains('burger_active')){
+      document.querySelector('.menu').classList.add('menu_visible');
+    }else{
+      document.querySelector('.menu').classList.remove('menu_visible');
+    }
+    
+  }
 })
