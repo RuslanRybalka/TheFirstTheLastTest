@@ -44,9 +44,9 @@ body{
   align-items: flex-start;
 }
 .bg-img__svg{
-  stroke-dasharray: 2000px;
-  stroke-dashoffset: 2000px;
-  animation: 'bg-img-animation' 3s linear infinite alternate-reverse;
+  stroke-dasharray: 1917px;
+  stroke-dashoffset: 1917px;
+  animation: 'bg-img-animation' 3s linear forwards;
 }
 @keyframes bg-img-animation{
   to{
