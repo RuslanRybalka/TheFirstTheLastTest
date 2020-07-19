@@ -1,5 +1,4 @@
 // Init swiper slider
-
 const swiper = new Swiper('.swiper-container', {
   speed: 1000,
   slidesPerView: 'auto',
@@ -7,11 +6,56 @@ const swiper = new Swiper('.swiper-container', {
   loop: true,
   on: {
     touchEnd: function(){
-     
-      console.log(swiper.activeIndex);
-    }
+      console.log(swiper.realIndex);
+    },
+    slidePrevTransitionEnd: function(swiper){
+      let photosMain = document.querySelector('.photo_main');
+      changePhotos(photosMain, 'next');
+
+      let photosLeft = document.querySelector('.photo_left');
+      changePhotos(photosLeft, 'next');
+
+      let photosRight = document.querySelector('.photo_right');
+      changePhotos(photosRight, 'next');
+    },
+    slideNextTransitionEnd: function(swiper){
+      let photosMain = document.querySelector('.photo_main');
+      changePhotos(photosMain, 'prev');
+
+      let photosLeft = document.querySelector('.photo_left');
+      changePhotos(photosLeft, 'prev');
+
+      let photosRight = document.querySelector('.photo_right');
+      changePhotos(photosRight, 'prev');
+    },
   }
 });
+
+
+function changePhotos(photoContainer, direction){
+  let visibleSlide = photoContainer.querySelector('.photo__img_visible');
+
+
+  if(direction === 'next'){
+    let nextSlide = visibleSlide.nextElementSibling;
+    visibleSlide.classList.remove('photo__img_visible');
+    if(nextSlide)  {
+      nextSlide.classList.add('photo__img_visible');
+    }else{
+      photoContainer.firstElementChild.classList.add('photo__img_visible');
+    }
+  }else if(direction === 'prev'){
+    let prevSlide = visibleSlide.previousElementSibling;
+    visibleSlide.classList.remove('photo__img_visible');
+    if(prevSlide)  {
+      prevSlide.classList.add('photo__img_visible');
+    }else{
+      photoContainer.lastElementChild.classList.add('photo__img_visible');
+    }
+  }
+  
+}
+
 
 document.addEventListener('DOMContentLoaded', function(){
 
