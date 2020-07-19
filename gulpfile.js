@@ -11,6 +11,7 @@ const ttf2woff2     = require('gulp-ttf2woff2');
 const fonter        = require('gulp-fonter');
 const imagemin      = require('gulp-imagemin');
 const del           = require('del');
+const cssmediagroup   = require('gulp-group-css-media-queries');
 
 const src_directory = 'src';
 const dist_directory = 'dist';
@@ -92,6 +93,7 @@ const styles = () => {
       overrideBrowserslist: ['last 10 versions'],
       grid: true
   }))
+  .pipe(cssmediagroup())
   .pipe(cleancss({
     level: {
       1: {
