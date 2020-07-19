@@ -13,20 +13,22 @@ const swiper = new Swiper('.swiper-container', {
       changePhotos(photosMain, 'next');
 
       let photosLeft = document.querySelector('.photo_left');
-      changePhotos(photosLeft, 'next');
+      setTimeout(() => changePhotos(photosLeft, 'next'), 100);
+      
 
       let photosRight = document.querySelector('.photo_right');
-      changePhotos(photosRight, 'next');
+      setTimeout(() => changePhotos(photosRight, 'next'), 200);
+      
     },
     slideNextTransitionEnd: function(swiper){
       let photosMain = document.querySelector('.photo_main');
       changePhotos(photosMain, 'prev');
 
       let photosLeft = document.querySelector('.photo_left');
-      changePhotos(photosLeft, 'prev');
+      setTimeout(() => changePhotos(photosLeft, 'prev'), 100);      
 
       let photosRight = document.querySelector('.photo_right');
-      changePhotos(photosRight, 'prev');
+      setTimeout(() => changePhotos(photosRight, 'prev'), 200)
     },
   }
 });
