@@ -45,6 +45,13 @@
     font-size: 44px;
   }
 }
+
+.swiper-slide-next{
+  transform: rotate(1.5deg);
+}
+.swiper-slide-prev{
+  transform: rotate(-1.5deg);
+}
 .swiper-slide-active{
   -webkit-text-fill-color:  #580300; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: none;
