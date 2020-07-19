@@ -149,4 +149,4 @@ exports.scripts       = scripts;
 exports.styles        = styles;
 exports.browsersync   = browsersync;
 
-exports.default       = series(clean, fonts, images, html, parallel(styles, scripts, browsersync, watchAll));
+exports.default       = series(clean, createFolders, fonts, images, html, parallel(styles, scripts, browsersync, watchAll));

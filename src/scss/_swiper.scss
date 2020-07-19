@@ -6,10 +6,13 @@
   &:hover{
     cursor: url(../img/cursor.png), auto;
   }
+  @media all and (max-width: 414px){
+    transform: translateY(-40%);
+  }
 }
 .swiper-slide{
   font-family: 'Schnyder Cond L Demi', sans-serif;
-  font-size: 157px;
+  font-size: 128px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,6 +29,21 @@
   -webkit-text-stroke-width: 0.84px;
   -webkit-text-stroke-color:#580300;
   transition: 0.5s;
+  @media all and (max-width: 1439px){
+    flex-basis: 62%;
+    font-size: 96px;
+  }
+  @media all and (max-width: 1023px){
+    flex-basis: 75%;
+    font-size: 96px;
+  }
+  @media all and (max-width: 767px){
+    font-size: 48px;
+  }
+  @media all and (max-width: 413px){
+    flex-basis: 76%;
+    font-size: 44px;
+  }
 }
 .swiper-slide-active{
   -webkit-text-fill-color:  #580300; /* Will override color (regardless of order) */

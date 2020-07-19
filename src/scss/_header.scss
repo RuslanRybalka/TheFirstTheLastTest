@@ -3,6 +3,21 @@
   top: 40px;
   left:47px;
   z-index: 99;
+  @media all and (max-width: 1024px){
+    top: 27px;
+    left: 31px;
+  }
+  @media all and (max-width: 414px){
+    width: 95px;
+    height: 16px;
+    top: 33px;
+    left: 24px;
+  }
+  @media all and (max-width: 375px){
+    top: 16px;
+    left: 20px;
+
+  }
 }
 
 .nav{

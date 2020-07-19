@@ -6,6 +6,19 @@
   bottom: 47px;
   left: 48px;
   z-index: 1;
+  @media all and (max-width: 1024px){
+    left: 32px;
+    bottom: 32px;
+    font-size: 12px;
+  }
+  @media all and (max-width: 414px){
+    left: 24px;
+    bottom: 24px;
+  }
+  @media all and (max-width: 414px){
+    left: 20px;
+    bottom: 20px;
+  }
 }
 .socials__line{
   display: block;

@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function(){
   // *****************   Parallax *****************
 
   let photos = document.querySelectorAll('.photo');
+  let photosParentCoords = document.querySelector('.photos').getBoundingClientRect();
   photos = [].map.call(photos, (photo) => {
     let coords = photo.getBoundingClientRect();
     coords.centerX = (coords.left + coords.right) / 2;
@@ -120,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function(){
     [].map.call(photos, photo => {
       let mount = +photo.element.dataset['depth'] * 30;
       photo.element.style.left = photo.params.x - (e.clientX - photo.params.centerX) / photo.params.width * mount + 'px';
-      photo.element.style.top = photo.params.y - (e.clientY - photo.params.centerY) / photo.params.height * mount + 'px';
+      photo.element.style.top = photo.params.y - photosParentCoords.top- (e.clientY - photo.params.centerY) / photo.params.height * mount + 'px';
     })
   }
 })
