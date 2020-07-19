@@ -10,18 +10,19 @@
     height: 540px;
   }
   @media all and (max-width: 767px){
-    height: 403px;
-  }
-  @media all and (max-width: 414px){
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 403px;
+  }
+  @media all and (max-width: 413px){
+    height: 367px;
   }
 }
 .photo{
   position: absolute;
   overflow: hidden;
-  @media all and (max-width: 414px){
+  @media all and (max-width: 767px){
     position: static;
   }
 }
