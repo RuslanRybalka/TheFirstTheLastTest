@@ -3,20 +3,24 @@
   top: 40px;
   left:47px;
   z-index: 99;
-  @media all and (max-width: 1024px){
+  
+  @media all and (max-width: 1439px){
     top: 27px;
-    left: 31px;
+    left: 32px;
   }
-  @media all and (max-width: 414px){
-    width: 95px;
-    height: 16px;
+  @media all and (max-width: 1023px){
+    top: 27px;
+    left: 32px;
+  }
+  @media all and (max-width: 767px){
     top: 33px;
     left: 24px;
   }
-  @media all and (max-width: 375px){
+  @media all and (max-width: 413px){
+    width: 95px;
+    height: 16px;
     top: 16px;
     left: 20px;
-
   }
 }
 
