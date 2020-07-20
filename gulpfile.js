@@ -15,6 +15,7 @@ const cssmediagroup   = require('gulp-group-css-media-queries');
 
 const src_directory = 'src';
 const dist_directory = 'dist';
+const build_directory = 'build';
 
 const path = {
   src: {
@@ -35,13 +36,27 @@ const path = {
     fonts:   dist_directory + '/fonts/',
     html:    dist_directory,
     images:  dist_directory + '/img'
-  }
+  },
+  build: {
+    scripts: build_directory + '/js/',
+    styles:  build_directory + '/css/',
+    fonts:   build_directory + '/fonts/',
+    html:    build_directory,
+    images:  build_directory + '/img'
+  },
+
 }
 
 const images = () => {
   return src(path.src.images)
          .pipe(imagemin())
          .pipe(dest(path.dist.images));
+}
+
+const imagesBuild = () => {
+  return src(path.src.images)
+         .pipe(imagemin())
+         .pipe(dest(path.build.images));
 }
 const fonts = () => {
   src(path.src.fonts + '/**/*.ttf')
@@ -51,6 +66,16 @@ const fonts = () => {
   return src(path.src.fonts + '/**/*.ttf')
     .pipe(ttf2woff2())
     .pipe(dest(path.dist.fonts));
+}
+
+const fontsBuild = () => {
+  src(path.src.fonts + '/**/*.ttf')
+    .pipe(ttf2woff())
+    .pipe(dest(path.build.fonts));
+
+  return src(path.src.fonts + '/**/*.ttf')
+    .pipe(ttf2woff2())
+    .pipe(dest(path.build.fonts));
 }
 
 const otf2ttf = () => {
@@ -77,12 +102,24 @@ const html = () => {
   .pipe(browserSync.stream())
 }
 
+const htmlBuild = () => {
+  return src(path.src.html)
+  .pipe(dest(path.build.html))
+}
+
 const scripts = () => {
   return src(path.src.scripts)
   .pipe(concat('main.min.js'))
   .pipe(uglify())
   .pipe(dest(path.dist.scripts))
   .pipe(browserSync.stream())
+}
+
+const scriptsBuild = () => {
+  return src(path.src.scripts)
+  .pipe(concat('main.min.js'))
+  .pipe(uglify())
+  .pipe(dest(path.build.scripts))
 }
 
 const styles = () => {
@@ -104,6 +141,25 @@ const styles = () => {
   }))
   .pipe(dest(path.dist.styles))
   .pipe(browserSync.stream())
+}
+
+const stylesBuild = () => {
+  return src(path.src.styles)
+  .pipe(sass())
+  .pipe(concat('style.min.css'))
+  .pipe(autoprefixer({
+      overrideBrowserslist: ['last 10 versions'],
+      grid: true
+  }))
+  .pipe(cssmediagroup())
+  .pipe(cleancss({
+    level: {
+      1: {
+        specialsComments: 0
+      }    
+    },
+  }))
+  .pipe(dest(path.build.styles))
 }
 
 const watchHtml = () => {
@@ -137,18 +193,33 @@ const createFolders = () => {
           .pipe(dest(dist_directory + '/img'))
 }
 
+const createFoldersBuild = () => {
+  return src('*.*', {read: false})
+          .pipe(dest(build_directory))
+          .pipe(dest(build_directory + '/css'))
+          .pipe(dest(build_directory + '/js'))
+          .pipe(dest(build_directory + '/fonts'))
+          .pipe(dest(build_directory + '/img'))
+}
+
 exports.createFolders = createFolders;
 exports.clean         = clean;
 exports.images        = images;
+exports.imagesBuild   = imagesBuild;
 exports.otf2ttf       = otf2ttf;
 exports.fonts         = fonts;
+exports.fontsBuild    = fontsBuild;
 exports.watchScripts  = watchScripts;
 exports.watchStyles   = watchStyles;
 exports.watchHtml     = watchHtml;
 exports.watchAll      = watchAll;
 exports.html          = html;
+exports.htmlBuild     = htmlBuild;
 exports.scripts       = scripts;
+exports.scriptsBuild  = scriptsBuild;
 exports.styles        = styles;
+exports.stylesBuild   = stylesBuild;
 exports.browsersync   = browsersync;
 
-exports.default       = series(clean, createFolders, fonts, images, html, parallel(styles, scripts, browsersync, watchAll));
+exports.dev           = series(clean, createFolders, fonts, images, html, parallel(styles, scripts, browsersync, watchAll));
+exports.build         = series(createFoldersBuild, fontsBuild, imagesBuild, htmlBuild, parallel(stylesBuild, scriptsBuild));
