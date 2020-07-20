@@ -6,6 +6,9 @@
   &:hover{
     cursor: url(../img/cursor.png), auto;
   }
+  @media all and (max-width: 1023px){
+    transform: translateY(-40%);
+  }
   @media all and (max-width: 414px){
     transform: translateY(-40%);
   }
@@ -19,7 +22,7 @@
   height: 40vh;
   color: #580300;
   text-transform: uppercase;
-  
+
   flex-basis: calc(65% - (100vw - 1440px) / 480 * 60);
   flex-shrink: 0;
   flex-grow: 0;
@@ -35,12 +38,16 @@
   }
   @media all and (max-width: 1023px){
     flex-basis: 75%;
-    @include adaptiveSize(font-size, 768, 1023, 48, 96);
+    font-size: 96px;
   }
   @media all and (max-width: 767px){
-    @include adaptiveSize(font-size, 414, 767, 44, 48);
+    @include adaptiveSize(font-size, 414, 767, 48, 96);
   }
   @media all and (max-width: 413px){
+    flex-basis: 80%;    
+    @include adaptiveSize(font-size, 375, 413, 44, 48);
+  }
+  @media all and (max-width: 374px){
     flex-basis: 80%;
     font-size: 44px;
   }
@@ -53,7 +60,7 @@
   transform: rotate(-1.5deg);
 }
 .swiper-slide-active{
-  -webkit-text-fill-color:  #580300; /* Will override color (regardless of order) */
+  -webkit-text-fill-color:  #580300; 
   -webkit-text-stroke-width: none;
   -webkit-text-stroke-color: none;
 }

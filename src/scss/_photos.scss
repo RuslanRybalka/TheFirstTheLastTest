@@ -73,7 +73,7 @@
   width: 238px;
   height: 331px;
   top: 128px;
-  left: calc(50vw - 476px / 2 - 245px);
+  left: calc(50vw - 476px / 2 - 5px - 238px);
   transform: rotate(1.1deg);
   @media all and (max-width:1439px){
     left: calc(50vw - 359px / 2 - 175px);
@@ -82,7 +82,7 @@
     @include adaptiveSize(width,  1024, 1439, 163, 238);
   }
   @media all and (max-width:1023px){
-    top: 70px;
+    top: 120px;
     width: 163px;    
     height: 226px;
   }
@@ -93,16 +93,19 @@
 .photo_right{
   width: 345px;
   height: 238px;
-  top: 421px;
+  //top: 421px;
+  bottom: 42px;
   left: calc(50vw + 150px);
   transform: rotate(2.03deg);
   @media all and (max-width:1439px){
-    top: 327px;
+    //top: 327px;
+    //bottom: 60px;
     @include adaptiveSize(height,  1024, 1439, 162, 238);
     @include adaptiveSize(width,  1024, 1439, 234, 345);
   } 
   @media all and (max-width:1023px){
-    top: 300px;   
+    //top: 300px;   
+    //bottom: 42px;
     left: calc(50vw + 130px);
     width: 234px;
     height: 162px;
