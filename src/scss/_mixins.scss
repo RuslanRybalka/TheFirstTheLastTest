@@ -1,0 +1,3 @@
+@mixin adaptiveSize($type, $startPoint, $endPoint, $startSize, $endSize){
+  #{$type}: calc(#{$startSize}px + (100vw - #{$startPoint}px) / (#{$endPoint} - #{$startPoint}) * (#{$endSize} - #{$startSize}));
+}

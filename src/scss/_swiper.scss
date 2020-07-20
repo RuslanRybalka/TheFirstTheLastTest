@@ -19,26 +19,26 @@
   height: 40vh;
   color: #580300;
   text-transform: uppercase;
-  //pointer-events: none;
-  flex-basis: 65%;
+  
+  flex-basis: calc(65% - (100vw - 1440px) / 480 * 60);
   flex-shrink: 0;
   flex-grow: 0;
   letter-spacing: 8px;
 
-  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-fill-color: transparent; 
   -webkit-text-stroke-width: 0.84px;
   -webkit-text-stroke-color:#580300;
   transition: 0.5s;
   @media all and (max-width: 1439px){
     flex-basis: 62%;
-    font-size: 96px;
+    @include adaptiveSize(font-size, 1024, 1439, 96, 128);
   }
   @media all and (max-width: 1023px){
     flex-basis: 75%;
-    font-size: 96px;
+    @include adaptiveSize(font-size, 768, 1023, 48, 96);
   }
   @media all and (max-width: 767px){
-    font-size: 48px;
+    @include adaptiveSize(font-size, 414, 767, 44, 48);
   }
   @media all and (max-width: 413px){
     flex-basis: 80%;

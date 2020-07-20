@@ -7,16 +7,21 @@
   width: 100%;
   transform: translateY(-50%);
   @media all and (max-width: 1439px){
+    @include adaptiveSize(height, 1024, 1439, 540, 702);
+  }
+  @media all and (max-width: 1023px){
     height: 540px;
   }
   @media all and (max-width: 767px){
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 403px;
+    
+    @include adaptiveSize(height, 414, 767, 403, 540);
   }
   @media all and (max-width: 413px){
-    height: 367px;
+    
+    @include adaptiveSize(height, 375, 413, 369, 403);
   }
 }
 .photo{
@@ -43,35 +48,25 @@
 }
 
 .photo_main{
-  // top: 50%;
-  // left: 50%;
   transform:rotate(1.5deg);
-  //@extend: 74px;
-  //left: 473px;
   left: calc(50vw - 476px / 2);
   top: 0;
-  // width: 476px;
-  // height: 702px;
   width: 476px;
-  height: 702px;
+  height: 100%;
   @media all and (max-width:1439px){
     left: calc(50vw - 359px / 2);
-    width: 359px;
-    height: 530px;
+    @include adaptiveSize(width, 1024, 1439, 359, 476);
   }
   @media all and (max-width:1023px){
     width: 359px;
-    height: 530px;
   }
   @media all and (max-width:767px){
     left: calc(50vw - 273px / 2);
-    width: 273px;
-    height: 403px;
+    @include adaptiveSize(width, 414, 767, 273, 359);
   }
   @media all and (max-width:413px){
     left: calc(50vw - 250px / 2);
-    width: 250px;
-    height: 367px;
+    @include adaptiveSize(width, 375, 413, 250, 273);
   }
 }
 .photo_left{
@@ -83,12 +78,12 @@
   @media all and (max-width:1439px){
     left: calc(50vw - 359px / 2 - 175px);
     top: 109px;
-    width: 163px;
-    height: 226px;
+    @include adaptiveSize(height,  1024, 1439, 226, 331);
+    @include adaptiveSize(width,  1024, 1439, 163, 238);
   }
   @media all and (max-width:1023px){
     top: 70px;
-    width: 163px;
+    width: 163px;    
     height: 226px;
   }
   @media all and (max-width:767px){
@@ -103,8 +98,8 @@
   transform: rotate(2.03deg);
   @media all and (max-width:1439px){
     top: 327px;
-    width: 234px;
-    height: 162px;
+    @include adaptiveSize(height,  1024, 1439, 162, 238);
+    @include adaptiveSize(width,  1024, 1439, 234, 345);
   } 
   @media all and (max-width:1023px){
     top: 300px;   

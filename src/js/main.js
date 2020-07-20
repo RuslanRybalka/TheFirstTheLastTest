@@ -5,10 +5,7 @@ const swiper = new Swiper('.swiper-container', {
   centeredSlides: true,
   loop: true,
   on: {
-    touchEnd: function(){
-      console.log(swiper.realIndex);
-    },
-    slidePrevTransitionEnd: function(swiper){
+    slidePrevTransitionEnd: function(){
       let photosMain = document.querySelector('.photo_main');
       changePhotos(photosMain, 'next');
 
@@ -20,7 +17,7 @@ const swiper = new Swiper('.swiper-container', {
       setTimeout(() => changePhotos(photosRight, 'next'), 200);
       
     },
-    slideNextTransitionEnd: function(swiper){
+    slideNextTransitionEnd: function(){
       let photosMain = document.querySelector('.photo_main');
       changePhotos(photosMain, 'prev');
 
