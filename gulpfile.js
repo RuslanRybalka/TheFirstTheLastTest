@@ -1,17 +1,18 @@
 const {src, dest, watch, parallel, series}  = require('gulp');
 
-const browserSync   = require('browser-sync').create();
-const concat        = require('gulp-concat');
-const uglify        = require('gulp-uglify-es').default;
-const sass          = require('gulp-sass');
-const autoprefixer  = require('gulp-autoprefixer');
-const cleancss      = require('gulp-clean-css');
-const ttf2woff      = require('gulp-ttf2woff');
-const ttf2woff2     = require('gulp-ttf2woff2');
-const fonter        = require('gulp-fonter');
-const imagemin      = require('gulp-imagemin');
-const del           = require('del');
+const browserSync     = require('browser-sync').create();
+const concat          = require('gulp-concat');
+const uglify          = require('gulp-uglify-es').default;
+const sass            = require('gulp-sass');
+const autoprefixer    = require('gulp-autoprefixer');
+const cleancss        = require('gulp-clean-css');
+const ttf2woff        = require('gulp-ttf2woff');
+const ttf2woff2       = require('gulp-ttf2woff2');
+const fonter          = require('gulp-fonter');
+const imagemin        = require('gulp-imagemin');
+const del             = require('del');
 const cssmediagroup   = require('gulp-group-css-media-queries');
+const rename          = require('gulp-rename');
 
 const src_directory = 'src';
 const dist_directory = 'dist';
@@ -109,7 +110,11 @@ const htmlBuild = () => {
 
 const scripts = () => {
   return src(path.src.scripts)
-  .pipe(concat('main.min.js'))
+  .pipe(concat('main.js'))
+  .pipe(dest(path.dist.scripts))
+  .pipe(rename({
+    extname: '.min.js'
+  }))
   .pipe(uglify())
   .pipe(dest(path.dist.scripts))
   .pipe(browserSync.stream())
@@ -125,12 +130,16 @@ const scriptsBuild = () => {
 const styles = () => {
   return src(path.src.styles)
   .pipe(sass())
-  .pipe(concat('style.min.css'))
+  .pipe(concat('style.css'))
   .pipe(autoprefixer({
       overrideBrowserslist: ['last 10 versions'],
       grid: true
   }))
   .pipe(cssmediagroup())
+  .pipe(dest(path.dist.styles))
+  .pipe(rename({
+    extname: '.min.css'
+  }))
   .pipe(cleancss({
     level: {
       1: {
